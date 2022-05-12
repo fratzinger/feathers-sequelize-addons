@@ -1,12 +1,12 @@
 {
-  "name": "feathers-sequelize-join-query",
+  "name": "feathers-sequelize-addons",
   "version": "0.0.1",
   "description": "",
   "author": "fratzinger",
   "homepage": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fratzinger/feathers-sequelize-join-query"
+    "url": "https://github.com/fratzinger/feathers-sequelize-addons"
   },
   "keywords": [],
   "license": "MIT",
@@ -56,6 +56,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
+    "@feathersjs/errors": "^4.5.12",
     "@feathersjs/feathers": "^4.5.12",
     "fast-copy": "^2.1.3",
     "feathers-sequelize": "^6.3.3",

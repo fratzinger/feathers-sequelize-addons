@@ -1,11 +1,5 @@
-// const sequelize = new Sequelize("sequelize", "", "", {
-//   dialect: "sqlite",
-//   storage: path.join(__dirname, "../../../.data/db.sqlite"),
-//   logging: false
-// });
-
 import { DataTypes, Sequelize } from "sequelize";
-import { joinQuery } from "../src";
+import { joinQuery, $groupBy } from "../src";
 import feathers from "@feathersjs/feathers";
 import { Service } from "feathers-sequelize";
 
@@ -93,7 +87,10 @@ export const makeApp = async () => {
   users.hooks({
     before: {
       all: [],
-      find: [joinQuery()],
+      find: [
+        joinQuery(),
+        $groupBy()
+      ],
       get: [],
       create: [],
       update: [],
@@ -117,14 +114,20 @@ export const makeApp = async () => {
       default: 10,
       max: 25
     },
-    multi: true
+    multi: true,
+    whitelist: [
+      "$users.name$"
+    ]
   }));
 
   const teams = app.service("teams");
   teams.hooks({
     before: {
       all: [],
-      find: [joinQuery()],
+      find: [
+        joinQuery(),
+        $groupBy()
+      ],
       get: [],
       create: [],
       update: [],
@@ -159,7 +162,10 @@ export const makeApp = async () => {
   todos.hooks({
     before: {
       all: [],
-      find: [joinQuery()],
+      find: [
+        joinQuery(),
+        $groupBy()
+      ],
       get: [],
       create: [],
       update: [],
